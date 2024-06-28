@@ -22,9 +22,10 @@ namespace Domain
         public int? nIdProgramacionVueloIda { get; set; }
     }
 
-    public class ProgramacionVueloCantDTO
-    { 
-        public int nCapacidad { get; set; }
-        public int nPasajeros { get; set; }
+    public class getPrecioProgramacioVueloDTO
+    {
+        public int nCantidadPax { get; set; }
+        public int nIdProgramacionVueloIda { get; set; }
+        public int? nIdProgramacionVueloVuelta { get; set; }
     }
 }

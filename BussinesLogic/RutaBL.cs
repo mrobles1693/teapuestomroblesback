@@ -28,9 +28,9 @@ namespace BussinesLogic
             return await this.repository.getListProgramacion(searchProgramacionVuelo);
         }
 
-        public async Task<ProgramacionVueloCantDTO> getDisponibilidadAsientos(int nIdProgramacionVuelo)
+        public async Task<int> getPrecioFinal(getPrecioProgramacioVueloDTO getPrecioProgramacion)
         {
-            return await this.repository.getDisponibilidadAsientos(nIdProgramacionVuelo);
+            return await this.repository.getPrecioFinal(getPrecioProgramacion);
         }
     }
 }

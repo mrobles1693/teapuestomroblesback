@@ -35,6 +35,38 @@ namespace Repository
             return res;
         }
 
+        public async Task<SqlRspDTO> cancelarReserva(int nIdReserva)
+        {
+            SqlRspDTO res = new SqlRspDTO();
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnBD")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_reserva]", 2);
+                parameters.Add("nIdReserva", nIdReserva);
+
+                res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return res;
+        }
+
+        public async Task<SqlRspDTO> finalizarReserva(int nIdReserva)
+        {
+            SqlRspDTO res = new SqlRspDTO();
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnBD")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_reserva]", 3);
+                parameters.Add("nIdReserva", nIdReserva);
+
+                res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return res;
+        }
+
         public async Task<SqlRspDTO> insPasajero(InsPasajeroDTO insPasajero)
         {
             SqlRspDTO res = new SqlRspDTO();

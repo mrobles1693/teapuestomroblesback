@@ -7,6 +7,6 @@ namespace Repository.Interfaces
         Task<IList<CiudadDTO>> getListOrigen();
         Task<IList<CiudadDTO>> getListDestino(int nIdCiudadOrigen);
         Task<IList<ProgramacionVueloDTO>> getListProgramacion(searchProgramacionVueloDTO searchProgramacionVuelo);
-        Task<ProgramacionVueloCantDTO> getDisponibilidadAsientos(int nIdProgramacionVuelo);
+        Task<int> getPrecioFinal(getPrecioProgramacioVueloDTO getPrecioProgramacion);
     }
 }

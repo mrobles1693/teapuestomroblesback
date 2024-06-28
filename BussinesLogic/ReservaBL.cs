@@ -19,6 +19,16 @@ namespace BussinesLogic
             return await repository.insReserva(insReserva);
         }
 
+        public async Task<SqlRspDTO> cancelarReserva(int nIdReserva)
+        {
+            return await repository.cancelarReserva(nIdReserva);
+        }
+
+        public async Task<SqlRspDTO> finalizarReserva(int nIdReserva)
+        {
+            return await repository.finalizarReserva(nIdReserva);
+        }
+
         public async Task<SqlRspDTO> insPasajero(InsPasajeroDTO insPasajero)
         {
             return await repository.insPasajero(insPasajero);

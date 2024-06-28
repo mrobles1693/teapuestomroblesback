@@ -82,17 +82,17 @@ namespace services.Controllers
             }
         }
 
-        [HttpGet("[action]")]
-        public async Task<ActionResult<ApiResponse<ProgramacionVueloCantDTO>>> getDisponibilidadAsientos(int nIdProgramacionVuelo)
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ApiResponse<int>>> getPrecioFinal([FromBody] getPrecioProgramacioVueloDTO getPrecioProgramacion)
         {
-            ApiResponse<ProgramacionVueloCantDTO> response = new ApiResponse<ProgramacionVueloCantDTO>();
+            ApiResponse<int> response = new ApiResponse<int>();
 
             try
             {
-                var result = await service.getDisponibilidadAsientos(nIdProgramacionVuelo);
+                var result = await service.getPrecioFinal(getPrecioProgramacion);
 
                 response.success = true;
-                response.data = (ProgramacionVueloCantDTO)result;
+                response.data = (int) result;
                 return StatusCode(200, response);
             }
             catch (Exception ex)

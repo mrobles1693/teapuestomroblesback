@@ -66,17 +66,19 @@ namespace Repository
             return list.ToList();
         }
 
-        public async Task<ProgramacionVueloCantDTO> getDisponibilidadAsientos(int nIdProgramacionVuelo)
+        public async Task<int> getPrecioFinal(getPrecioProgramacioVueloDTO getPrecioProgramacion)
         {
-            ProgramacionVueloCantDTO res = new ProgramacionVueloCantDTO();
+            int res = 0;
 
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnBD")))
             {
                 DynamicParameters parameters = new();
                 string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_ruta]", 4);
-                parameters.Add("nIdProgramacionVuelo", nIdProgramacionVuelo);
+                parameters.Add("nCantidadPax", getPrecioProgramacion.nCantidadPax);
+                parameters.Add("nIdProgramacionVueloIda", getPrecioProgramacion.nIdProgramacionVueloIda);
+                parameters.Add("nIdProgramacionVueloVuelta", getPrecioProgramacion.nIdProgramacionVueloVuelta);
 
-                res = await connection.QuerySingleAsync<ProgramacionVueloCantDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+                res = await connection.ExecuteScalarAsync<int>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
             }
 
             return res;
