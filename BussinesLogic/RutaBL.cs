@@ -23,9 +23,9 @@ namespace BussinesLogic
             return await this.repository.getListDestino(nIdCiudadOrigen);
         }
 
-        public async Task<IList<ProgramacionVueloDTO>> getListProgramacion(int nIdCiudadOrigen, int nIdCiudadDestino)
+        public async Task<IList<ProgramacionVueloDTO>> getListProgramacion(searchProgramacionVueloDTO searchProgramacionVuelo)
         {
-            return await this.repository.getListProgramacion(nIdCiudadOrigen, nIdCiudadDestino);
+            return await this.repository.getListProgramacion(searchProgramacionVuelo);
         }
 
         public async Task<ProgramacionVueloCantDTO> getDisponibilidadAsientos(int nIdProgramacionVuelo)

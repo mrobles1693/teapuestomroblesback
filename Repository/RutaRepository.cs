@@ -47,7 +47,7 @@ namespace Repository
             return list.ToList();
         }
 
-        public async Task<IList<ProgramacionVueloDTO>> getListProgramacion(int nIdCiudadOrigen, int nIdCiudadDestino)
+        public async Task<IList<ProgramacionVueloDTO>> getListProgramacion(searchProgramacionVueloDTO searchProgramacionVuelo)
         {
             IEnumerable<ProgramacionVueloDTO> list = new List<ProgramacionVueloDTO>();
 
@@ -55,8 +55,10 @@ namespace Repository
             {
                 DynamicParameters parameters = new();
                 string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_ruta]", 3);
-                parameters.Add("nIdCiudadOrigen", nIdCiudadOrigen);
-                parameters.Add("nIdCiudadDestino", nIdCiudadDestino);
+                parameters.Add("nIdCiudadOrigen", searchProgramacionVuelo.nIdCiudadOrigen);
+                parameters.Add("nIdCiudadDestino", searchProgramacionVuelo.nIdCiudadDestino);
+                parameters.Add("nCantidadPax", searchProgramacionVuelo.nCantidadPax);
+                parameters.Add("nIdProgramacionVueloIda", searchProgramacionVuelo.nIdProgramacionVueloIda);
 
                 list = await connection.QueryAsync<ProgramacionVueloDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
             }

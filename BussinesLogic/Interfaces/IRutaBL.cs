@@ -6,7 +6,7 @@ namespace BussinesLogic.Interfaces
     {
         Task<IList<CiudadDTO>> getListOrigen();
         Task<IList<CiudadDTO>> getListDestino(int nIdCiudadOrigen);
-        Task<IList<ProgramacionVueloDTO>> getListProgramacion(int nIdCiudadOrigen, int nIdCiudadDestino);
+        Task<IList<ProgramacionVueloDTO>> getListProgramacion(searchProgramacionVueloDTO searchProgramacionVuelo);
         Task<ProgramacionVueloCantDTO> getDisponibilidadAsientos(int nIdProgramacionVuelo);
     }
 }

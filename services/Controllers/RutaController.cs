@@ -61,14 +61,14 @@ namespace services.Controllers
             }
         }
 
-        [HttpGet("[action]")]
-        public async Task<ActionResult<ApiResponse<List<ProgramacionVueloDTO>>>> getListProgramacion(int nIdCiudadOrigen, int nIdCiudadDestino)
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ApiResponse<List<ProgramacionVueloDTO>>>> getListProgramacion([FromBody] searchProgramacionVueloDTO searchProgramacionVuelo)
         {
             ApiResponse<List<ProgramacionVueloDTO>> response = new ApiResponse<List<ProgramacionVueloDTO>>();
 
             try
             {
-                var result = await service.getListProgramacion(nIdCiudadOrigen, nIdCiudadDestino);
+                var result = await service.getListProgramacion(searchProgramacionVuelo);
 
                 response.success = true;
                 response.data = (List<ProgramacionVueloDTO>)result;
