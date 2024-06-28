@@ -9,8 +9,9 @@ namespace Domain
 {
     public class InsReservaDTO
     {
-        public int nIdProgramacionVuelo { get; set; }
         public int nCantidadPax { get; set; }
+        public int nIdProgramacionVueloIda { get; set; }
+        public int? nIdProgramacionVueloVuelta { get; set; }
     }
 
     public class InsPasajeroDTO

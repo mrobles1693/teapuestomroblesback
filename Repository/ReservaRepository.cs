@@ -25,8 +25,9 @@ namespace Repository
             {
                 DynamicParameters parameters = new();
                 string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_reserva]", 1);
-                parameters.Add("nIdProgramacionVuelo", insReserva.nIdProgramacionVuelo);
                 parameters.Add("nCantidadPax", insReserva.nCantidadPax);
+                parameters.Add("nIdProgramacionVueloIda", insReserva.nIdProgramacionVueloIda);
+                parameters.Add("nIdProgramacionVueloVuelta", insReserva.nIdProgramacionVueloVuelta);
 
                 res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
             }
@@ -41,7 +42,7 @@ namespace Repository
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnBD")))
             {
                 DynamicParameters parameters = new();
-                string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_resera_pasajero]", 1);
+                string storedProcedure = string.Format("{0};{1}", "[dbo].[pa_reserva_pasajero]", 1);
                 parameters.Add("nIdReserva", insPasajero.nIdReserva);
                 parameters.Add("bPrincipal", insPasajero.bPrincipal);
                 parameters.Add("sDNI", insPasajero.sDNI);
