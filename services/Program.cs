@@ -14,6 +14,8 @@ builder.Services.AddCors(options => {
             builder.WithOrigins(
                 "http://localhost:4200"
                 , "http://localhost:4201"
+                , "http://teapuestomrobles.azurewebsites.net"
+                , "https://teapuestomrobles.azurewebsites.net"
                 )
             .AllowAnyMethod()
             .AllowAnyHeader();
